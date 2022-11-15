@@ -4,13 +4,28 @@ import com.yearup.week4.code.linkedlist.SinglyLinkedList;
 
 public class HomeWork {
 
+    public static void generateTable(int n){
+        for(int i = 1 ; i <= 10 ; i++){
+            System.out.println(n + " X " + i +" = " + n*i);
+        }
+    }
+
+    //Given a string, return the reversed char array of it
+
+
     /**
      * takes a String input and returns a char array of reversed string
      * @param input
      * @return
      */
-    public static char[] reverseString(String input){
-        return null;
+    public static char[] reverseString(String input) {
+        int c = 0;
+
+        char[] out = new char[input.length()];
+        for (int i = input.length()-1 ; i >= 0; i--) {
+            out[c++] = input.charAt(i);
+        }
+        return out;
     }
 
     /**
@@ -65,5 +80,10 @@ public class HomeWork {
         int size();
         void add(int element);
         int remove(int pos);
+    }
+
+    public static void main(String[] args) {
+        //generateTable(13);
+        System.out.println(HomeWork.reverseString("Emanuel"));
     }
 }
