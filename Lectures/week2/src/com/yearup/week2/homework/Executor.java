@@ -158,6 +158,7 @@ public class Executor {
             default:
                 System.out.println("Enter a valid planet name.");
                 break;
-        }
+       
+ }
     }
 }
