@@ -1,9 +1,15 @@
 //P1S1: Create a package/namespace called com.yearup.week2.homework
 package com.yearup.week2.homework;
+
+
 import java.util.Scanner;
+
+
 //Part 6:
 //P6S1: Create a class named Executor in the same package. This class should have the main method
 public class Executor {
+
+
     //P6S3: Create a scanner object in the class so that it can be accessed by other methods
     //in the class.
     static Scanner scan = new Scanner(System.in);
@@ -11,16 +17,55 @@ public class Executor {
     and set the access modifier so that the object can be accessed by other member methods in the class.*/
     static SolarSystemPlanet ssp = new SolarSystemPlanet();
 
+
     public static void main(String[] args) {
 
-        String planetName = planetName();
-        double radius = planetRadius();
-        double planetArea = ssp.getArea(radius);
-        displayArea(planetArea);
-        starPlanet(ssp);
-        planetPos(ssp, planetName);
-        System.out.println("Thanks for using our planet application. Goodbye!");
+        //String planetName = planetName();
+//        double radius = planetRadius();
+//        double planetArea = ssp.getArea(radius);
+//        displayArea(planetArea);
+//        starPlanet(ssp);
+//        planetPos(ssp, planetName);
+//        System.out.println("Thanks for using our planet application. Goodbye!");
+
+    ///////////// ///////////// ///////////// ///////////// ///////////// ///////////// ///////////// ///////////// ///////////// ///////////// /////////////
+        /*HW3: P1S1&2: Create an anonymous class called CelestialObject. This should implement an interface
+        with the same name and one method to displayCelestialobject().
+        Override the method and display “Comet is a celestial object”.
+         */
+        CelestialObject co = new CelestialObject() {
+            @Override
+            public void displayCelestialObject() {
+                System.out.println("Comet is a celestial Object");
+            }
+        };
+        co.displayCelestialObject();
+
+//        MilkyWay m = new MilkyWay();
+//        m.printMilkyWay();
+        MilkyWay.printMilkyWay();
+
+//        String planetName = planetMoon();
+////        System.out.println(planetName);
+//        MoonNum(planetName());
+
+
+        Planet1 myPlanet = Planet1.valueOf(planetMoon());
+        System.out.println("The number of moons this planet has is: "+ myPlanet.number);
+        //MoonName(myPlanet);
+
     }
+
+    interface CelestialObject {
+        void displayCelestialObject();
+    }
+
+    public static String planetMoon(){
+        System.out.println("Enter planet name: ");
+        String d = scan.nextLine();
+        return d;
+    }
+
 
     /*P6S5: Create a method which displays the message “Enter the planet name” and
     returns the input value from the user as String type.*/
@@ -52,5 +97,67 @@ public class Executor {
     public static void planetPos(SolarSystemPlanet p, String planetName) {
         int position = ssp.planetPos(planetName);
         System.out.println("The position of the planet is: " + position);
+    }
+
+    public static void MoonNum(String planetName) {
+        int numMoon = Planet1.valueOf(planetName()).ordinal();
+        System.out.println("The number of moon this planet has is: " + numMoon);
+
+    }
+
+
+
+    public static class MilkyWay {
+        public static void printMilkyWay() {
+            System.out.println("Your planet belongs to Milky way galaxy.");
+        }
+    }
+
+    enum Planet1{
+        MERCURY(0),
+        VENUS(0),
+        EARTH(1),
+        MARS(2),
+        JUPITER(80),
+        SATURN(83),
+        URANUS(27),
+        NEPTUNE(14);
+        int number;
+
+        Planet1(int number){
+            this.number = number;
+        }
+    }
+    static void MoonName(Planet1 myPlanet){
+
+        switch(myPlanet) {
+            case MERCURY:
+                System.out.println(myPlanet.number);
+                break;
+            case VENUS:
+                System.out.println(myPlanet.number);
+                break;
+            case EARTH:
+                System.out.println(myPlanet.number);
+                break;
+            case MARS:
+                System.out.println(myPlanet.number);
+                break;
+            case JUPITER:
+                System.out.println(myPlanet.number);
+                break;
+            case SATURN:
+                System.out.println(myPlanet.number);
+                break;
+            case URANUS:
+                System.out.println(myPlanet.number);
+                break;
+            case NEPTUNE:
+                System.out.println(myPlanet.number);
+                break;
+            default:
+                System.out.println("Enter a valid planet name.");
+                break;
+        }
     }
 }
