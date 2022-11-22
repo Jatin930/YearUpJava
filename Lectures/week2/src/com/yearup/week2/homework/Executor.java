@@ -13,7 +13,7 @@ public class Executor {
     //P6S3: Create a scanner object in the class so that it can be accessed by other methods
     //in the class.
     static Scanner scan = new Scanner(System.in);
-    /*S6P4: Create an SolarSystemPlanet object (not under main method but under class itslef)
+    /*S6P4: Create an SolarSystemPlanet object (not under main method but under class itself)
     and set the access modifier so that the object can be accessed by other member methods in the class.*/
     static SolarSystemPlanet ssp = new SolarSystemPlanet();
 
@@ -62,11 +62,28 @@ public class Executor {
     interface CelestialObject {
         void displayCelestialObject();
     }
+    public static class MilkyWay {
+        public static void printMilkyWay() {
+            System.out.println("Your planet belongs to Milky way galaxy.");
+        }
+    }
 
     public static String planetMoon(){
         System.out.println("Enter planet name: ");
         return scan.nextLine();
 
+    }
+    public static void displayMoon(String planet, int numberOfMoons) {
+        System.out.println(planet + " has " + numberOfMoons + " moon(s)");
+    }
+    public static int NumMoon(String planet) {
+        int numberOfMoons = 0;
+        for (Planet1 p: Planet1.values()) {
+            if (planet.equalsIgnoreCase(String.valueOf(p))) {
+                numberOfMoons = p.number;
+            }
+        }
+        return numberOfMoons;
     }
 
 
@@ -102,12 +119,6 @@ public class Executor {
         System.out.println("The position of the planet is: " + position);
     }
 
-    public static class MilkyWay {
-        public static void printMilkyWay() {
-            System.out.println("Your planet belongs to Milky way galaxy.");
-        }
-    }
-
     enum Planet1{
         MERCURY(0),
         VENUS(0),
@@ -124,17 +135,7 @@ public class Executor {
         }
 
     }
-    public static int NumMoon(String planet) {
-        int numberOfMoons = 0;
-        for (Planet1 p: Planet1.values()) {
-            if (planet.equalsIgnoreCase(String.valueOf(p))) {
-                numberOfMoons = p.number;
-            }
-        }
-        return numberOfMoons;
-    }
-    public static void displayMoon(String planet, int numberOfMoons) {
-        System.out.println(planet + " has " + numberOfMoons + " moon(s)");
-    }
+
+
 
 }
