@@ -50,9 +50,12 @@ public class Executor {
 //        MoonNum(planetName());
 
 
-        Planet1 myPlanet = Planet1.valueOf(planetMoon());
-        System.out.println("The number of moons this planet has is: "+ myPlanet.number);
+//        Planet1 myPlanet = Planet1.valueOf(planetMoon());
+//        System.out.println("The number of moons this planet has is: "+ myPlanet.number);
         //MoonName(myPlanet);
+        String nameOfPlanet = planetMoon();
+        int numMoons = NumMoon(nameOfPlanet);
+        displayMoon(nameOfPlanet, numMoons);
 
     }
 
@@ -62,8 +65,8 @@ public class Executor {
 
     public static String planetMoon(){
         System.out.println("Enter planet name: ");
-        String d = scan.nextLine();
-        return d;
+        return scan.nextLine();
+
     }
 
 
@@ -99,14 +102,6 @@ public class Executor {
         System.out.println("The position of the planet is: " + position);
     }
 
-    public static void MoonNum(String planetName) {
-        int numMoon = Planet1.valueOf(planetName()).ordinal();
-        System.out.println("The number of moon this planet has is: " + numMoon);
-
-    }
-
-
-
     public static class MilkyWay {
         public static void printMilkyWay() {
             System.out.println("Your planet belongs to Milky way galaxy.");
@@ -127,38 +122,19 @@ public class Executor {
         Planet1(int number){
             this.number = number;
         }
-    }
-    static void MoonName(Planet1 myPlanet){
 
-        switch(myPlanet) {
-            case MERCURY:
-                System.out.println(myPlanet.number);
-                break;
-            case VENUS:
-                System.out.println(myPlanet.number);
-                break;
-            case EARTH:
-                System.out.println(myPlanet.number);
-                break;
-            case MARS:
-                System.out.println(myPlanet.number);
-                break;
-            case JUPITER:
-                System.out.println(myPlanet.number);
-                break;
-            case SATURN:
-                System.out.println(myPlanet.number);
-                break;
-            case URANUS:
-                System.out.println(myPlanet.number);
-                break;
-            case NEPTUNE:
-                System.out.println(myPlanet.number);
-                break;
-            default:
-                System.out.println("Enter a valid planet name.");
-                break;
-       
- }
     }
+    public static int NumMoon(String planet) {
+        int numberOfMoons = 0;
+        for (Planet1 p: Planet1.values()) {
+            if (planet.equalsIgnoreCase(String.valueOf(p))) {
+                numberOfMoons = p.number;
+            }
+        }
+        return numberOfMoons;
+    }
+    public static void displayMoon(String planet, int numberOfMoons) {
+        System.out.println(planet + " has " + numberOfMoons + " moon(s)");
+    }
+
 }
